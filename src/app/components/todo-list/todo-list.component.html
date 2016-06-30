@@ -1,0 +1,8 @@
+<section class="main">
+  <ul class="todo-list">
+    <todo-item *ngFor="let item of items"
+      [item]="item"
+      (destroyItem)="destroyItem($index)">
+    </todo-item>
+  </ul>
+</section>

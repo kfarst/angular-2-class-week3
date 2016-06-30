@@ -1,0 +1,7 @@
+<li [class.completed]="item.completed">
+  <div class="view">
+    <input class="toggle" type="checkbox" (click)="toggle()" [checked]="item.completed">
+    <label>{{item.label}}</label>
+    <button (click)="destroyItem.emit()" class="destroy"></button>
+  </div>
+</li>

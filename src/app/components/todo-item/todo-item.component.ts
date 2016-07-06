@@ -8,6 +8,8 @@ import { Todo } from '../../services/todo-service';
   templateUrl: 'todo-item.component.html'
 })
 export class TodoItemComponent {
+  editMode = false;
+
   @Input() item: Todo;
   @Output() destroyItem = new EventEmitter();
 
@@ -17,5 +19,22 @@ export class TodoItemComponent {
     setTimeout(() => {
       this.destroyItem.emit('');
     }, 1000);
+  }
+
+  enterEditMode(element: HTMLInputElement) {
+    this.editMode = true;
+    if (this.editMode) {
+      setTimeout(() => { element.focus(); }, 0);
+    }
+  }
+
+  cancelEdit(element: HTMLInputElement) {
+    this.editMode = false;
+    element.value = this.item.label;
+  }
+
+  commitEdit(updatedText: string) {
+    this.editMode = false;
+    this.item.label = updatedText;
   }
 }

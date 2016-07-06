@@ -9,9 +9,13 @@ import { Todo } from '../../services/todo-service';
 })
 export class TodoItemComponent {
   @Input() item: Todo;
-  @Output() destroyItem = new EventEmitter<number>();
+  @Output() destroyItem = new EventEmitter();
 
   toggle () {
-    this.item.completed = !this.item.completed;
+    this.item.completed = true;
+
+    setTimeout(() => {
+      this.destroyItem.emit('');
+    }, 1000);
   }
 }

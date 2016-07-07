@@ -1,16 +1,22 @@
 import { Component, ViewChild } from '@angular/core';
-import { TodoSearchComponent } from '../todo-search/todo-search.component';
+import { TodoInputComponent } from '../todo-input/todo-input.component';
 import { TodoListComponent } from '../todo-list/todo-list.component';
-import { TodoService } from '../../services/todo-service';
+import { Todo } from '../../services/todo-service';
 
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  providers: [TodoService],
-  directives: [TodoListComponent, TodoSearchComponent]
+  directives: [TodoListComponent, TodoInputComponent]
 })
 export class AppComponent {
+  @ViewChild (TodoListComponent)
+  todoList: TodoListComponent;
+
   title = 'todos';
+
+  addItemToList (item: Todo) {
+    this.todoList.items.push(item);
+  }
 }

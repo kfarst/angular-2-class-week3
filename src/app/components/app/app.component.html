@@ -3,7 +3,7 @@
     <h1>
       {{title}}
     </h1>
-    <todo-search></todo-search>
+    <todo-input (itemAdded)="addItemToList($event)"></todo-input>
   </header>
 
   <todo-list></todo-list>

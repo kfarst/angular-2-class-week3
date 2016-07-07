@@ -37,7 +37,7 @@ export class TodoItemComponent {
     this.editMode = false;
     this.item.label = updatedText;
   }
-  
+
   confirmDestroy (evt) {
     if (confirm('Are you sure you want to delete this item?')) {
       this.destroyItem.emit('');

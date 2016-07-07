@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChildren, QueryList } from '@angular/core';
-import { Todo, TodoService } from '../../services/todo-service';
+import { Component, ViewChildren, QueryList } from '@angular/core';
+import { Todo } from '../../services/todo-service';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
 
 @Component({
@@ -9,28 +9,13 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
   directives: [TodoItemComponent],
   templateUrl: 'todo-list.component.html'
 })
-export class TodoListComponent implements OnInit, OnDestroy {
+export class TodoListComponent {
   @ViewChildren(TodoItemComponent)
   componentList: QueryList<TodoItemComponent>;
 
   items: Todo[] = [];
 
-  constructor (private todoService: TodoService) { }
-
-  ngOnInit () {
-    this
-    .todoService
-    .subscribe(todo => {
-      todo.completed = false;
-      this.items.push(todo);
-    });
-  }
-
   destroyItem (index) {
     this.items.splice(index, 1);
-  }
-
-  ngOnDestroy () {
-    this.todoService.unsubscribe();
   }
 }

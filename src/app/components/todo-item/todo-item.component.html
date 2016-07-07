@@ -2,7 +2,7 @@
   <div class="view">
     <input class="toggle" type="checkbox" (click)="toggle()" [checked]="item.completed">
     <label (dblclick)="enterEditMode(todoItemInput)">{{item.label}}</label>
-    <button (click)="destroyItem.emit()" class="destroy"></button>
+    <button (click)="confirmDestroy($event)" class="destroy"></button>
   </div>
   <input class="edit" [value]="item.label"
     #todoItemInput
